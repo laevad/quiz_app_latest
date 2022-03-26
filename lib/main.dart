@@ -13,11 +13,14 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   var _questionIndex = 0;
+  var _totalScore = 0;
 
-  void answerQuestion() {
+  void answerQuestion(int score) {
     setState(() {
       _questionIndex++;
+      _totalScore += score;
     });
+    print(_totalScore);
   }
 
   @override
@@ -25,11 +28,18 @@ class _MyAppState extends State<MyApp> {
     var question = [
       {
         'question': "fav color?",
-        "answer": ['red', 'blue', 'violet']
+        "answer": [
+          {"text": 'red', "score": 5},
+          {"text": 'blue', "score": 8},
+          {"text": 'green', "score": 10},
+        ]
       },
       {
         "question": "fav fruit",
-        "answer": ["mango", "strawberry"]
+        "answer": [
+          {"text": "mango", "score": 3},
+          {"text": "strawberry", "score": 5},
+        ]
       },
     ];
     return MaterialApp(
@@ -45,7 +55,7 @@ class _MyAppState extends State<MyApp> {
                 answerQuestion: answerQuestion,
                 questionIndex: _questionIndex,
               )
-            : const Result(),
+            : Result(resScore: _totalScore),
       ),
     );
   }

@@ -1,15 +1,23 @@
 import 'package:flutter/material.dart';
 
 class Result extends StatelessWidget {
-  const Result({Key? key}) : super(key: key);
+  final int resScore;
+  const Result({Key? key, required this.resScore}) : super(key: key);
+
+  String get resultPhrase {
+    if (resScore > 10) {
+      return "Well done. Score: " + resScore.toString();
+    }
+    return "Amazing. Score: " + resScore.toString();
+  }
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
+    return Center(
       child: Text(
-        'Well done',
-        style: TextStyle(
-          fontSize: 24,
+        resultPhrase,
+        style: const TextStyle(
+          fontSize: 36,
           fontWeight: FontWeight.bold,
         ),
       ),
