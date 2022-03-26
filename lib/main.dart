@@ -3,8 +3,13 @@ import 'package:flutter/material.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
+  void answerQuestion() {
+    print("Answer");
+  }
+
   @override
   Widget build(BuildContext context) {
+    var question = ["fav color?", "fav fruit"];
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'My App',
@@ -16,7 +21,7 @@ class MyApp extends StatelessWidget {
           children: [
             Text('Question'),
             ElevatedButton(
-              onPressed: null,
+              onPressed: answerQuestion,
               child: Text('Answer 0'),
             )
           ],
