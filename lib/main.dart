@@ -20,7 +20,13 @@ class _MyAppState extends State<MyApp> {
       _questionIndex++;
       _totalScore += score;
     });
-    print(_totalScore);
+  }
+
+  void resetQuiz() {
+    setState(() {
+      _questionIndex = 0;
+      _totalScore = 0;
+    });
   }
 
   @override
@@ -55,7 +61,7 @@ class _MyAppState extends State<MyApp> {
                 answerQuestion: answerQuestion,
                 questionIndex: _questionIndex,
               )
-            : Result(resScore: _totalScore),
+            : Result(resScore: _totalScore, resetQuiz: resetQuiz),
       ),
     );
   }
